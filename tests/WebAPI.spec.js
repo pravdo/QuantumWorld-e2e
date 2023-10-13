@@ -27,13 +27,11 @@ test("Page Playwright login", async ({ page }) => {
   await page.goto("http://localhost:3000");
   await page.waitForURL(); // Wait for any possible redirects.
 
-  // You can add some debugging statements to check if the token is properly set in local storage
   console.log(
     "Token in local storage: ",
     await page.evaluate(() => window.localStorage.getItem("token"))
   );
 
-  // Perform your tests for authentication bypass here
   await expect(page.locator(".sponsored")).toContainText("Sponsored");
   console.log("Ad found");
 });
